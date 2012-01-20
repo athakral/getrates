@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCheck.UI", "RateCheck.UI\RateCheck.UI.csproj", "{D1FCCE47-A04F-4791-93F8-0DCFFBEA7CE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCheck.Services", "RateCheck.Services\RateCheck.Services.csproj", "{5EA607A3-B740-40AD-9CE8-6BB167986527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCheck.Tests", "RateCheck.Tests\RateCheck.Tests.csproj", "{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{D1FCCE47-A04F-4791-93F8-0DCFFBEA7CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1FCCE47-A04F-4791-93F8-0DCFFBEA7CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1FCCE47-A04F-4791-93F8-0DCFFBEA7CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA607A3-B740-40AD-9CE8-6BB167986527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA607A3-B740-40AD-9CE8-6BB167986527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA607A3-B740-40AD-9CE8-6BB167986527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA607A3-B740-40AD-9CE8-6BB167986527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,15 +32,18 @@ namespace RateCheck.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(float amount) {
+        public ActionResult Index(float? amount) {
             ViewBag.Message = "Use this application to view USD to INR converted amount from 3 major transfer service providers. For your reference, google finance rate is also provided.";
 
+            if (amount == null)
+                return View();
+
             var returnedAmounts = providerServices.Aggregate(new List<ReturnedAmount>(), (seed, item) => {
-                                                                            seed.Add(item.GetRate(amount));
+                                                                            seed.Add(item.GetRate(amount.Value));
                                                                             return seed;
                                                                         });
             ViewBag.Amount = amount;
-            return View("Index", returnedAmounts.AsEnumerable());
+            return View(returnedAmounts.AsEnumerable());
         }
 
         public ActionResult About() {

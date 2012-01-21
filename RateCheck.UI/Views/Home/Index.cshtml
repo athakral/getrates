@@ -50,7 +50,8 @@
     </section>*@
 @*</form>*@
 }
-@if (Model != null) {    
+@if (Model != null) { 
+    <h2 style="width: 100%; text-align: center; margin-bottom: 10px;"> Amount Entered @String.Format("{0:C}",ViewBag.Amount)</h2>   
     <table id="results" class="tablesorter">
         <thead>
             <th>
@@ -70,10 +71,10 @@
                         @returnedAmount.ProviderName
                     </td>
                     <td>
-                        $@returnedAmount.ConversionRate
+                        @returnedAmount.ConversionRate.ToString("C", new System.Globalization.CultureInfo("en-IN"))
                     </td>
                     <td>
-                        @returnedAmount.ConvertedAmount INR
+                        @returnedAmount.ConvertedAmount.ToString("C", new System.Globalization.CultureInfo("en-IN"))
                     </td>
                 </tr>  
             }

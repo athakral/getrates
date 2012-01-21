@@ -39,7 +39,7 @@ namespace RateCheck.UI.Controllers
                                                                             seed.Add(item.GetRate(amount));
                                                                             return seed;
                                                                         });
-
+            ViewBag.Amount = amount;
             return View("Index", returnedAmounts.AsEnumerable());
         }
 

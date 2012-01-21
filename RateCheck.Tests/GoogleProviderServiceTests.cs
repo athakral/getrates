@@ -12,8 +12,9 @@ namespace RateCheck.Tests
         {
             var providerService = new GoogleProviderService();
             var returnedValue=providerService.GetRate(100);
-            Assert.Greater(returnedValue, 100);
-            Console.WriteLine(returnedValue);
+            Assert.NotNull(returnedValue);
+            Assert.Greater(returnedValue.ConvertedAmount, 100);
+            Console.WriteLine(returnedValue.ConvertedAmount);
         }
          
     }

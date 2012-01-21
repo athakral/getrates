@@ -4,7 +4,7 @@ namespace RateCheck.Services
 {
     public class XoomProviderService : IProviderService
     {
-        public float GetRate(float amount)
+        public ReturnedAmount GetRate(float amount)
         {
             var web= new HtmlWeb();
             var doc=web.Load("https://www.xoom.com/sendmoneynow/india");
@@ -13,9 +13,14 @@ namespace RateCheck.Services
             var finalRate = (float) 0.0;
             if (float.TryParse(ratefromWeb, out finalRate))
             {
-                return amount*finalRate;
+                return new ReturnedAmount()
+                           {
+                               ProviderName = "Xoom",
+                               ConversionRate = finalRate,
+                               ConvertedAmount = amount*finalRate
+                           };
             }
-            return (float) 0.0;
+            return null;
 
         }
     }

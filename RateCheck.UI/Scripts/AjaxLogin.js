@@ -19,6 +19,7 @@ $(function () {
         return errorSummary;
     };
 
+
     var formSubmitHandler = function (e) {
         var $form = $(this);
 
@@ -94,4 +95,8 @@ $(function () {
             e.preventDefault();
         });
     });
+
+    //$("form#searchbox").submit(formSubmitHandler);
+    $("table.tablesorter").tablesorter(); 
+
 });

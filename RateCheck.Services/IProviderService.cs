@@ -2,6 +2,13 @@
 {
     public interface IProviderService
     {
-       float GetRate(float amount);
+        ReturnedAmount GetRate(float amount);
+    }
+
+    public class ReturnedAmount
+    {
+        public string ProviderName { get; set; }
+        public float ConversionRate { get; set; }
+        public float ConvertedAmount { get; set; }
     }
 }

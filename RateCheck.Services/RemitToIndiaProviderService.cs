@@ -7,11 +7,11 @@ namespace RateCheck.Services
 {
     public class RemitToIndiaProviderService : IProviderService
     {
-        public float GetRate(float amount)
+        public ReturnedAmount GetRate(float amount)
         {
             var request = WebRequest.Create("http://www.timesofmoney.com/remittance/jsp/r2iExchRateCalculator.jsp?strAction=show&partnerSite=TOML&sendercountry=US&sendercurrency=USD&uiId=TOML") as HttpWebRequest;
             if (request == null)
-                return (float)0.0;
+                return null;
             request.Method = "POST";
             request.UserAgent = " Mozilla/5.0 (Windows NT 6.1; WOW64; rv:9.0.1) Gecko/20100101 Firefox/9.0.1";
             request.Accept = "text/plain, */*; q=0.01";
@@ -44,9 +44,13 @@ namespace RateCheck.Services
             var ratefromWeb = document.DocumentNode.SelectSingleNode("//span[@id='rateDisplay']").InnerText;
             var finalRate = (float)0.0;
             if (float.TryParse(ratefromWeb, out finalRate)) {
-                return amount * finalRate;
+                return new ReturnedAmount() {
+                    ProviderName = "Times Money Remit 2 India",
+                    ConversionRate = finalRate,
+                    ConvertedAmount = amount * finalRate
+                };
             }
-            return (float)0.0;
+            return null;
 
         }
     }

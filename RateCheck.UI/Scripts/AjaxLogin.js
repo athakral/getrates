@@ -162,8 +162,11 @@ $(function () {
                     //                        wholeTable += "<tr>" + rowHtml + "</tr>";
                     //                    });
                     if (json.length > 0) {
+                        $("div#tablePlaceHolder").html("");
                         $("div#tablePlaceHolder").append(json);
                         $("table.tablesorter").tablesorter();
+                        $("table.tablesorter tbody tr:nth-child(1) td").css("color", "RED");
+
                     }
                     $("#dialog-modal").dialog('close');
                     cl.hide();
@@ -172,13 +175,11 @@ $(function () {
             e.preventDefault();
         });
 
-
-
     $("#dialog-modal").dialog({
         modal: true,
         autoOpen: false,
         resizable: false,
-        position: ['center', 265],
+        position: ['center', 220],
         closeOnEscape: false,
         open: function (event, ui) {
             $("div.ui-dialog-titlebar").hide();
@@ -187,6 +188,63 @@ $(function () {
         }
 
     });
+    $("#providers").dialog({
+        modal: true,
+        autoOpen: false,
+        resizable: true,
+        closeOnEscape: true,
+        position: [700, 'center'],
+        open: function (event, ui) {
+            $("div.ui-dialog-titlebar").show();
+            $("div.ui-widget-content").css("width", "500px");
+            $("div.ui-widget-content").css("height", "300px");
+            $("div.ui-widget-content").css("text-align", "center");
+            $("div.ui-widget-content").css("background", "");
+            
+        }
+    });
+    $("a#linkProviders").click(function (e) {
+        $("#providers").dialog('open');
+        e.preventDefault();
+    });
+
     // $("table.tablesorter").tablesorter();
+
+    $(document).ready(function () {
+        if (!Modernizr.input.placeholder) {
+            var placeholderText = $('#amount').attr('placeholder');
+
+            $('#amount').attr('value', placeholderText);
+            $('#amount').addClass('placeholder');
+
+            $('#amount').focus(function () {
+                if (($('#amount').val() == placeholderText)) {
+                    $('#amount').attr('value', '');
+                    $('#amount').removeClass('placeholder');
+                }
+            });
+
+            $('#amount').blur(function () {
+                if (($('#amount').val() == placeholderText) || (($('#amount').val() == ''))) {
+                    $('#amount').addClass('placeholder');
+                    $('#amount').attr('value', placeholderText);
+                }
+            });
+        }
+    });
+
+    $('body')
+      .bind(
+       'click',
+       function (e) {
+           if ($('#providers').dialog('isOpen')
+         && !$(e.target).is('.ui-dialog, a')
+         && !$(e.target).closest('.ui-dialog').length
+        ) {
+               jQuery('#providers').dialog('close');
+           }
+       }
+      );
+
 
 });

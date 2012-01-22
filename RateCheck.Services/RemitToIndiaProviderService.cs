@@ -44,7 +44,7 @@ namespace RateCheck.Services
             var finalRate = (decimal)0.0;
             if (decimal.TryParse(ratefromWeb, out finalRate)) {
                 return new ReturnedData() {
-                    ProviderName = "Times Money Remit 2 India",
+                    ProviderName = "<a href=\"http://www.timesofmoney.com/remittance/jsp/r2iExchRateCalculator.jsp?uiId=TOML&sendercountry=US&sendercurrency=USD\">Remit 2 India</a>",
                     Rate = finalRate,
                     Fee = calculateFee(amount),
                     Deductions = calculateDeductions(finalRate, amount)

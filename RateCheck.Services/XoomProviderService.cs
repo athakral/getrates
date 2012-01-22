@@ -15,7 +15,7 @@ namespace RateCheck.Services
             {
                 return new ReturnedData()
                            {
-                               ProviderName = "Xoom",
+                               ProviderName = "<a href=\"https://www.xoom.com/sendmoneynow/india\">Xoom</a>",
                                Rate = finalRate,
                                Fee = calculateFee(amount)
                            };

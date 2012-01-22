@@ -52,6 +52,9 @@ namespace RateCheck.Web.Start
             kernel.Bind<IProviderService>().To<RemitToIndiaProviderService>();
             kernel.Bind<IProviderService>().To<XoomProviderService>();
             kernel.Bind<ICalculationService>().To<CalculationService>();
+            kernel.Bind<IProviderService>().To<GoogleProviderService>().When(request =>
+                                                                             request.Target.Name.StartsWith(
+                                                                                 "reference"));
         }        
     }
 }

@@ -13,8 +13,8 @@
             <th>
                 Conversion Rate
             </th>
-            <th style="width:15%;">
-                Deductions
+            <th>
+                Deductions (Various Tax + Fees)
             </th>
             <th>
                 Amount Withdrawn
@@ -27,27 +27,27 @@
             </th>
         </thead>
         <tbody>
-            @foreach (var returnedAmount in Model) {
+            @foreach (var returnedAmount in Model.OrderByDescending(k=>k.EffectiveRate)) {
                 <tr>
-                    <td>
-                        @returnedAmount.ProviderName
+                    <td style="text-align: center; width: 20%;">
+                        @Html.Raw(returnedAmount.ProviderName)
                     </td>
-                    <td>
+                    <td style="text-align: right;">
                         @returnedAmount.Fee.ToString("C")
                     </td>
-                    <td>
+                    <td style="text-align: right;">
                         @returnedAmount.Rate.ToString("C", new System.Globalization.CultureInfo("en-IN"))
                     </td>
-                    <td>
+                    <td style="text-align: right;width:20%;">
                         @returnedAmount.Deductions.ToString("C", new System.Globalization.CultureInfo("en-IN"))
                     </td>
-                    <td>
+                    <td style="text-align: right;">
                         @returnedAmount.AmountWithdrawn.ToString("C")
                     </td>
-                    <td>
+                    <td style="text-align: right;">
                         @returnedAmount.Amount.ToString("C", new System.Globalization.CultureInfo("en-IN"))
                     </td>
-                    <td>
+                    <td style="text-align: right;">
                         @returnedAmount.EffectiveRate.ToString("C", new System.Globalization.CultureInfo("en-IN"))
                     </td>
                 </tr>

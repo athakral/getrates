@@ -57,7 +57,7 @@ namespace RateCheck.Services
                 && decimal.TryParse(ratefromWeb, out finalRate)
                 && decimal.TryParse(serviceFeeWeb, out serviceFee)) {
                 return new ReturnedData() {
-                    ProviderName = "ICICI Bank Money To India",
+                    ProviderName = "<a href=\"https://m2inet.icicibank.co.in/m2iNet/exchangeRate.misc\">Money To India</a>",
                     Rate = finalRate,
                     Fee = serviceFee,
                     Deductions = (finalRate * amount) - finalValue

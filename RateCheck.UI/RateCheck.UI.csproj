@@ -160,7 +160,10 @@
     <Content Include="Content\themes\ui-lightness\jquery.ui.tabs.css" />
     <Content Include="Content\themes\ui-lightness\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\money2India.jpg" />
     <Content Include="Images\Progress.gif" />
+    <Content Include="Images\remit2India.gif" />
+    <Content Include="Images\xoom.png" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
     <Content Include="Scripts\jquery-1.6.2.min.js" />

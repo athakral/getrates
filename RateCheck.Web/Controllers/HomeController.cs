@@ -9,14 +9,18 @@ namespace RateCheck.Web.Controllers
     {
         private readonly IEnumerable<IProviderService> providerServices;
         private readonly ICalculationService calculationService;
+        private readonly IProviderService referenceProviderService;
 
-        public HomeController(IEnumerable<IProviderService> providerServices,ICalculationService calculationService)
+        public HomeController(IEnumerable<IProviderService> providerServices, ICalculationService calculationService, IProviderService referenceProviderService)
         {
             this.providerServices = providerServices;
             this.calculationService = calculationService;
+            this.referenceProviderService = referenceProviderService;
         }
 
-        public ActionResult Index() {
+        public ActionResult Index()
+        {
+            ViewBag.Rate = referenceProviderService.GetRate(1).Rate;
             return View();
         }
 

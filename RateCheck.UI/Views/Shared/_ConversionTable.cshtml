@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RateCheck.Web.CalculatedData>
+@if (Model != null) {
+    <h2 style="width: 100%; text-align: center; margin-bottom: 10px;">
+        Amount Entered @String.Format("{0:C}", ViewBag.Amount)</h2>
+    <table id="results" class="tablesorter">
+        <thead>
+            <th>
+                Provider
+            </th>
+            <th>
+                Service Fee
+            </th>
+            <th>
+                Conversion Rate
+            </th>
+            <th style="width:15%;">
+                Deductions
+            </th>
+            <th>
+                Amount Withdrawn
+            </th>
+            <th>
+                Amount Deposited
+            </th>
+            <th>
+                Effective Rate
+            </th>
+        </thead>
+        <tbody>
+            @foreach (var returnedAmount in Model) {
+                <tr>
+                    <td>
+                        @returnedAmount.ProviderName
+                    </td>
+                    <td>
+                        @returnedAmount.Fee.ToString("C")
+                    </td>
+                    <td>
+                        @returnedAmount.Rate.ToString("C", new System.Globalization.CultureInfo("en-IN"))
+                    </td>
+                    <td>
+                        @returnedAmount.Deductions.ToString("C", new System.Globalization.CultureInfo("en-IN"))
+                    </td>
+                    <td>
+                        @returnedAmount.AmountWithdrawn.ToString("C")
+                    </td>
+                    <td>
+                        @returnedAmount.Amount.ToString("C", new System.Globalization.CultureInfo("en-IN"))
+                    </td>
+                    <td>
+                        @returnedAmount.EffectiveRate.ToString("C", new System.Globalization.CultureInfo("en-IN"))
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

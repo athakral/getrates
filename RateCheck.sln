@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCheck.Services", "RateC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCheck.Tests", "RateCheck.Tests\RateCheck.Tests.csproj", "{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCheck.Web", "RateCheck.Web\RateCheck.Web.csproj", "{1D988351-D0FF-4717-AAF8-06075B4E3257}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF99AD7B-5FE1-45F8-BF1F-B5A91288CA9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D988351-D0FF-4717-AAF8-06075B4E3257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D988351-D0FF-4717-AAF8-06075B4E3257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D988351-D0FF-4717-AAF8-06075B4E3257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D988351-D0FF-4717-AAF8-06075B4E3257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

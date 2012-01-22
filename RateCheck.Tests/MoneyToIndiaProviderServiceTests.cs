@@ -13,8 +13,8 @@ namespace RateCheck.Tests
             var providerService = new MoneyToIndiaProviderService();
             var returnedValue=providerService.GetRate(100);
             Assert.NotNull(returnedValue);
-            Assert.Greater(returnedValue.ConvertedAmount, 100);
-            Console.WriteLine(returnedValue.ConvertedAmount);
+            Assert.Greater(returnedValue.Rate, 100);
+            Console.WriteLine(returnedValue.Rate);
         }
          
     }

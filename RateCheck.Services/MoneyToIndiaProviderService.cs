@@ -6,7 +6,7 @@ namespace RateCheck.Services
 {
     public class MoneyToIndiaProviderService : IProviderService
     {
-        public ReturnedAmount GetRate(float amount) {
+        public ReturnedData GetRate(decimal amount) {
             var getCookieRequest =
                 WebRequest.Create("https://m2inet.icicibank.co.in/m2iNet/exchangeRate.misc") as HttpWebRequest;
             if (getCookieRequest == null)
@@ -46,18 +46,22 @@ namespace RateCheck.Services
             reader.Close();
             webResponse.Close();
             var valueArray = valueStr.Split('#');
+            var serviceFeeWeb = valueArray[0];
             var finalAmount = valueArray[2];
             var ratefromWeb = valueArray[8];
 
-            var finalValue = (float)0.0;
-            var finalRate = (float)0.0;
-            if (float.TryParse(finalAmount, out finalValue)) {
-                if (float.TryParse(ratefromWeb, out finalRate))
-                    return new ReturnedAmount() {
-                        ProviderName = "ICICI Bank Money To India",
-                        ConversionRate = finalRate,
-                        ConvertedAmount = finalValue
-                    };
+            var finalValue = (decimal)0.0;
+            var finalRate = (decimal)0.0;
+            var serviceFee = (decimal)0.0;
+            if (decimal.TryParse(finalAmount, out finalValue)
+                && decimal.TryParse(ratefromWeb, out finalRate)
+                && decimal.TryParse(serviceFeeWeb, out serviceFee)) {
+                return new ReturnedData() {
+                    ProviderName = "ICICI Bank Money To India",
+                    Rate = finalRate,
+                    Fee = serviceFee,
+                    Deductions = (finalRate * amount) - finalValue
+                };
             }
             return null;
         }

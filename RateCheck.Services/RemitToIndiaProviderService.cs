@@ -7,8 +7,7 @@ namespace RateCheck.Services
 {
     public class RemitToIndiaProviderService : IProviderService
     {
-        public ReturnedAmount GetRate(float amount)
-        {
+        public ReturnedData GetRate(decimal amount) {
             var request = WebRequest.Create("http://www.timesofmoney.com/remittance/jsp/r2iExchRateCalculator.jsp?strAction=show&partnerSite=TOML&sendercountry=US&sendercurrency=USD&uiId=TOML") as HttpWebRequest;
             if (request == null)
                 return null;
@@ -32,7 +31,7 @@ namespace RateCheck.Services
             // Close the Stream object.
             dataStream.Close();
 
-           // request.CookieContainer = new CookieContainer();
+            // request.CookieContainer = new CookieContainer();
             //request.CookieContainer.Add(new Cookie(stringValue.Split(';')[0].Split('=')[0], stringValue.Split(';')[0].Split('=')[1], "/m2iNet", "icicibank.co.in"));
             var webResponse = request.GetResponse();
             var reader = new StreamReader(webResponse.GetResponseStream());
@@ -42,16 +41,60 @@ namespace RateCheck.Services
             HtmlDocument document = new HtmlDocument();
             document.LoadHtml(valueStr);
             var ratefromWeb = document.DocumentNode.SelectSingleNode("//span[@id='rateDisplay']").InnerText;
-            var finalRate = (float)0.0;
-            if (float.TryParse(ratefromWeb, out finalRate)) {
-                return new ReturnedAmount() {
+            var finalRate = (decimal)0.0;
+            if (decimal.TryParse(ratefromWeb, out finalRate)) {
+                return new ReturnedData() {
                     ProviderName = "Times Money Remit 2 India",
-                    ConversionRate = finalRate,
-                    ConvertedAmount = amount * finalRate
+                    Rate = finalRate,
+                    Fee = calculateFee(amount),
+                    Deductions = calculateDeductions(finalRate, amount)
+
                 };
             }
             return null;
 
+        }
+
+        private decimal calculateDeductions(decimal finalRate, decimal amount) {
+            var tempDeduct = (decimal)0.00;
+            if (amount <= 500)
+                tempDeduct = 35;
+            if (amount > 500 && amount <= 1000)
+                tempDeduct = 45;
+            if (amount > 1000 && amount <= 5000)
+                tempDeduct = 75;
+            if (amount > 5000)
+                tempDeduct = 125;
+
+            var convertedAmount = (finalRate * amount) - tempDeduct;
+
+            //refer to tax table on http://www.timesofmoney.com/remittance/jsp/r2i_low_transfer_fees_money_transfer_asia.jsp?uiId=TOML&tab=US&sendercountry=US&sendercurrency=USD
+
+            var serviceTax = (decimal)25.75;
+
+            if (convertedAmount <= 100000)
+                if ((convertedAmount * (decimal)0.00103) > (decimal)25.75)
+                    serviceTax = (convertedAmount * (decimal)0.00103);
+            if (convertedAmount > 100000 && convertedAmount <= 1000000) {
+                serviceTax = 103 + (convertedAmount * (decimal)0.00052);
+            }
+            if(convertedAmount > 1000000)
+                serviceTax = 567 + (convertedAmount * (decimal)0.000103);
+
+            if (serviceTax > 5150)
+                serviceTax = 5150;
+
+            return tempDeduct + serviceTax;
+        }
+
+        private decimal calculateFee(decimal amount) {
+            if (amount <= 500)
+                return (decimal)3;
+            if (amount > 500 && amount <= 1000)
+                return (decimal)5;
+            if (amount > 1000)
+                return (decimal)0.00;
+            return (decimal)0.00;
         }
     }
 }

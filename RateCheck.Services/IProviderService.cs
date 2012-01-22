@@ -2,13 +2,14 @@
 {
     public interface IProviderService
     {
-        ReturnedAmount GetRate(float amount);
+        ReturnedData GetRate(decimal amount);
     }
 
-    public class ReturnedAmount
+    public class ReturnedData
     {
         public string ProviderName { get; set; }
-        public float ConversionRate { get; set; }
-        public float ConvertedAmount { get; set; }
+        public decimal Rate { get; set; }
+        public decimal Fee { get; set; }
+        public decimal Deductions { get; set; }
     }
 }

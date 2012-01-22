@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RateCheck.Services.ReturnedAmount>
+﻿@model IEnumerable<RateCheck.Web.CalculatedData>
 @{
     ViewBag.Title = "Welcome To CheckRates.in";
     
@@ -8,7 +8,7 @@
     <div class="content-wrapper">
         <hgroup class="title">
             <h1>@ViewBag.Title</h1>
-            <p><h2>@ViewBag.Message</h2></p>
+            <p><h2>Use this application to view USD to INR converted amount from 3 major transfer service providers. For your reference, google finance rate is also provided.</h2></p>
         </hgroup>
         @*<p>
             Use this application to view USD to INR converted amount from 3 major transfer service providers. For your reference, google finance rate is also provided.
@@ -16,8 +16,11 @@
     </div>
 </section>
 }
+<h2 style="width: 100%; text-align: center; margin-bottom: 5px; color: red;margin-top: 0px; display: none; " id="validationMessage">
+        Invalid Amount !!!!</h2>
 @*<form class="features" id="searchbox">*@
 @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "searchbox" })) {
+     
     <input type="text" name="amount" id="amount" placeholder="Enter Amount Here" />
     <input type="submit" value="Go" id="btnGo" />
        
@@ -50,37 +53,15 @@
     </section>*@
 @*</form>*@
 }
-@if (Model != null) { 
-    <h2 style="width: 100%; text-align: center; margin-bottom: 10px;"> Amount Entered @String.Format("{0:C}",ViewBag.Amount)</h2>   
-    <table id="results" class="tablesorter">
-        <thead>
-            <th>
-                Provider 
-            </th>
-            <th>
-                Conversion Rate
-            </th>
-            <th>
-                Converted Amount
-            </th>
-        </thead>
-        <tbody>
-            @foreach (var returnedAmount in Model) {
-                <tr>
-                    <td>
-                        @returnedAmount.ProviderName
-                    </td>
-                    <td>
-                        @returnedAmount.ConversionRate.ToString("C", new System.Globalization.CultureInfo("en-IN"))
-                    </td>
-                    <td>
-                        @returnedAmount.ConvertedAmount.ToString("C", new System.Globalization.CultureInfo("en-IN"))
-                    </td>
-                </tr>  
-            }
-        </tbody>
-    </table>
-}
+<div id="dialog-modal" style="background: transparent;text-align: center;">
+    <h2 style="font-family: 'Segoe UI',Verdana,Helvetica,Sans-Serif">Processing..... </h2>
+    <br/>
+    @*<img src="@Url.Content("~/Images/Progress.gif")" alt="progress"/>*@
+    <div id="canvasloader-container"></div>
+</div>
+<div id="tablePlaceHolder">
+        @Html.Partial("_ConversionTable", Model)
+</div>
 <h3>
     We suggest the following:</h3>
 <ol class="round">

@@ -4,20 +4,19 @@ namespace RateCheck.Services
 {
     public class GoogleProviderService : IProviderService
     {
-        public ReturnedAmount GetRate(float amount)
+        public ReturnedData GetRate(decimal amount)
         {
             var web = new HtmlWeb();
             var doc = web.Load("http://www.google.com/ig/calculator?hl=en&q=1USD=?INR");
             var innerText = doc.DocumentNode.InnerText;
             var ratefromWeb = innerText.Split(',')[1].Split(':')[1].Split(' ')[1].Replace("\"","");
-            var finalRate = (float)0.0;
-            if (float.TryParse(ratefromWeb, out finalRate))
+            var finalRate = (decimal)0.0;
+            if (decimal.TryParse(ratefromWeb, out finalRate))
             {
-                return new ReturnedAmount()
+                return new ReturnedData()
                            {
                                ProviderName = "Google",
-                               ConversionRate = finalRate,
-                               ConvertedAmount = amount*finalRate
+                               Rate = finalRate
                            };
             }
             return null;

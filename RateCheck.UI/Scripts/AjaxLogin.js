@@ -96,7 +96,97 @@ $(function () {
         });
     });
 
-    //$("form#searchbox").submit(formSubmitHandler);
-    $("table.tablesorter").tablesorter(); 
+    function isAmountInValid(amtVal) {
+        if (isNaN(amtVal))
+            return true;
+        if (parseFloat(amtVal) <= 0)
+            return true;
+        return false;
+    }
+
+
+
+    $("form#searchbox").submit(
+        function (e) {
+            var $form = $(this);
+
+            // We check if jQuery.validator exists on the form
+            if (!$form.valid || $form.valid()) {
+                var amtVal = $("input#amount").val();
+                if (amtVal.length == 0) {
+                    $("h2#validationMessage").text("Please provide an amount.");
+                    $("h2#validationMessage").show();
+                    e.preventDefault();
+                    return;
+                }
+                if (isAmountInValid(amtVal)) {
+                    $("h2#validationMessage").text("Please enter a valid amount.");
+                    $("h2#validationMessage").show();
+                    e.preventDefault();
+                    return;
+                }
+                $("h2#validationMessage").hide();
+                $("#dialog-modal").dialog('open');
+                var cl = new CanvasLoader('canvasloader-container'); //http://heartcode.robertpataki.com/canvasloader/
+                cl.setColor('#1f1b1f'); // default is '#000000'
+                cl.setShape('roundRect'); // default is 'oval'
+                cl.setDiameter(189); // default is 40
+                cl.setRange(1.1); // default is 1.3
+                cl.setFPS(20); // default is 24
+                cl.show(); // Hidden by default
+                $.post($form.attr('action'), $form.serializeArray())
+                .done(function (json) {
+                    //json = json || {};
+
+                    //                    // In case of success, we redirect to the provided URL or the same page.
+                    //                    if (json.successsuccess) {
+                    //                        location = json.redirect || location.href;
+                    //                    } else if (json.errors) {
+                    //                        var errorSummary = getValidationSummaryErrors($form);
+
+                    //                        var items = $.map(json.errors, function (error) {
+                    //                            return '<li>' + error + '</li>';
+                    //                        }).join('');
+
+                    //                        var ul = errorSummary
+                    //                            .find('ul')
+                    //                            .empty()
+                    //                            .append(items);
+                    //                    }
+                    //                    var wholeTable = "";
+                    //                    $.each(jsObj.quotesData, function (index, value) {
+                    //                        var rowHtml = "";
+                    //                        $.each(value, function (innerIndex, innerVal) {
+                    //                            rowHtml += "<td>" + innerVal + "</td>";
+                    //                        });
+                    //                        wholeTable += "<tr>" + rowHtml + "</tr>";
+                    //                    });
+                    if (json.length > 0) {
+                        $("div#tablePlaceHolder").append(json);
+                        $("table.tablesorter").tablesorter();
+                    }
+                    $("#dialog-modal").dialog('close');
+                    cl.hide();
+                });
+            }
+            e.preventDefault();
+        });
+
+
+
+    $("#dialog-modal").dialog({
+        modal: true,
+        autoOpen: false,
+        resizable: false,
+        position: ['center', 265],
+        closeOnEscape: false,
+        open: function (event, ui) {
+            $("div.ui-dialog-titlebar").hide();
+            $("div.ui-widget-content").css("background", "none");
+            $("div.ui-widget-content").css("border", "none");
+        }
+
+    });
+    // $("table.tablesorter").tablesorter();
 
 });

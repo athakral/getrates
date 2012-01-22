@@ -13,7 +13,7 @@ namespace RateCheck.Tests
             var providerService = new RemitToIndiaProviderService();
             var returnedValue=providerService.GetRate(100);
             Assert.NotNull(returnedValue);
-            Assert.Greater(returnedValue.Rate, 100);
+            Assert.Greater(returnedValue.Rate, 35);
             Console.WriteLine(returnedValue.Rate);
         }
          

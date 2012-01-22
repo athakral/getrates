@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GetRates.Web.CalculatedData>
+@{
+    ViewBag.Title = "GetRates";
+    
+}
+@section featured {
+    <section class="featured">
+    <div class="content-wrapper">
+        <hgroup class="title">
+            <h2>Use this application to compare rates for transfering money to India. For a list of supported providers, <a href="#" id="linkProviders">click here</a>
+                <p style="margin-bottom: 0px;">
+                For your reference, Current Google finance rate is ($1.00 = @(ViewBag.Rate != null ? ViewBag.Rate.ToString("C", new System.Globalization.CultureInfo("en-IN")) : ""))
+                </p>
+                </h2>
+        </hgroup>
+    </div>
+</section>
+}
+<h2 style="width: 100%; text-align: center; margin-bottom: 5px; color: red; margin-top: 0px; display: none;" id="validationMessage">
+</h2>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "searchbox" })) {
+    <input type="text" name="amount" id="amount" placeholder="Enter Amount Here" />
+    <input type="submit" value="Go" id="btnGo" />
+}
+<div id="dialog-modal" style="background: transparent; text-align: center;">
+    <h2 style="font-family: 'Segoe UI',Verdana,Helvetica,Sans-Serif">
+        Processing.....
+    </h2>
+    <br />
+    <div id="canvasloader-container">
+    </div>
+</div>
+<div id="providers" title="Providers" style="width: 500px; height: 500px;">
+    <ul style="font-size: medium; list-style: none outside none; margin-bottom: 0; margin-top: 0; padding-left: 0;">
+        <li><a href="https://m2inet.icicibank.co.in/m2iNet/m2iNetLoginForm.jsp">
+            <img src="@Url.Content("~/Images/money2India.jpg")" alt="Money To India" /></a></li>
+        <li><a href="http://www.timesofmoney.com/remittance/jsp/r2i_send_money_to_india.jsp?uiId=TOML&sendercountry=US&sendercurrency=USD">
+            <img src="@Url.Content("~/Images/remit2India.gif")" alt="Money To India" /></a></li>
+        <li><a href="https://www.xoom.com/sendmoneynow/india">
+            <img src="@Url.Content("~/Images/xoom.png")" alt="Money To India" /></a></li>
+    </ul>
+</div>
+<div id="tablePlaceHolder">
+    @Html.Partial("_ConversionTable", Model)
+</div>
+<h3>
+    We suggest the following:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>
+            Enter your Amount</h5>
+    </li>
+    <li class="two">
+        <h5>
+            Click Go</h5>
+    </li>
+    <li class="three">
+        <h5>
+            Check converted amount from all the providers</h5>
+    </li>
+</ol>

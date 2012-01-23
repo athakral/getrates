@@ -134,7 +134,6 @@ footer
 ---------------------------------------------------------- color: #c8c8c8;*/
 .site-title
 {
-    
     font-family: Rockwell, Consolas, "Courier New" , Courier, monospace;
     font-size: 2.3em;
     margin: 10px 0;
@@ -279,7 +278,14 @@ ol.round li
 {
     margin: 25px 0;
     padding-left: 45px;
+    padding-bottom: 10px;
 }
+
+ol.round li h5
+{
+    padding-top: 5px;
+}
+
 
 ol.round li.one
 {
@@ -543,7 +549,7 @@ a.twitter
 {
 
     /* header  
-        ----------------------------------------------------------*/
+            ----------------------------------------------------------*/
     header .float-left, header .float-right
     {
         float: none;
@@ -613,7 +619,7 @@ a.twitter
 
 
     /* main layout  
-        ----------------------------------------------------------*/
+            ----------------------------------------------------------*/
     .main-content, .featured + .main-content
     {
         background-position: 10px 0;
@@ -699,7 +705,7 @@ a.twitter
     }
 
     /* footer  
-        ----------------------------------------------------------*/
+            ----------------------------------------------------------*/
     footer .float-left, footer .float-right
     {
         float: none;

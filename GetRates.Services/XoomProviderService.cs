@@ -15,7 +15,7 @@ namespace GetRates.Services
             {
                 return new ReturnedData()
                            {
-                               ProviderName = "<a href=\"https://www.xoom.com/sendmoneynow/india\">Xoom</a>",
+                               ProviderName = "<a href=\"https://www.xoom.com/sendmoneynow/india/fees\" target=\"_blank\">Xoom</a>",
                                Rate = finalRate,
                                Fee = calculateFee(amount)
                            };

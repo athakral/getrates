@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Web.Mvc;
 using GetRates.Services;
+using Ninject.Activation;
 
 namespace GetRates.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IEnumerable<IProviderService> providerServices;
         private readonly ICalculationService calculationService;
@@ -49,6 +50,14 @@ namespace GetRates.Web.Controllers
             ViewBag.Message = "Your quintessential contact page.";
 
             return View();
+        }
+    }
+
+    public class BaseController : Controller
+    {
+        protected override void OnActionExecuted(ActionExecutedContext ctx) {
+            base.OnActionExecuted(ctx);
+            ViewBag.IsOnWeb = !Request.IsLocal;
         }
     }
 }

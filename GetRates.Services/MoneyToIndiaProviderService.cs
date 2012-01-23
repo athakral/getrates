@@ -57,7 +57,7 @@ namespace GetRates.Services
                 && decimal.TryParse(ratefromWeb, out finalRate)
                 && decimal.TryParse(serviceFeeWeb, out serviceFee)) {
                 return new ReturnedData() {
-                    ProviderName = "<a href=\"https://m2inet.icicibank.co.in/m2iNet/exchangeRate.misc\">Money To India</a>",
+                    ProviderName = "<a href=\"https://m2inet.icicibank.co.in/m2iNet/exchangeRate.misc\" target=\"_blank\">Money To India</a>",
                     Rate = finalRate,
                     Fee = serviceFee,
                     Deductions = (finalRate * amount) - finalValue

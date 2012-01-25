@@ -1,0 +1,14 @@
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\GetRates.Tests.dll
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\GetRates.Tests.pdb
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\GetRates.Services.dll
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\nunit.framework.dll
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\nunit.mocks.dll
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\pnunit.framework.dll
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\HtmlAgilityPack.dll
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\GetRates.Services.pdb
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\nunit.framework.xml
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\HtmlAgilityPack.pdb
+Y:\GetRates\getrates\GetRates.Tests\bin\Debug\HtmlAgilityPack.xml
+Y:\GetRates\getrates\GetRates.Tests\obj\Debug\ResolveAssemblyReference.cache
+Y:\GetRates\getrates\GetRates.Tests\obj\Debug\GetRates.Tests.dll
+Y:\GetRates\getrates\GetRates.Tests\obj\Debug\GetRates.Tests.pdb

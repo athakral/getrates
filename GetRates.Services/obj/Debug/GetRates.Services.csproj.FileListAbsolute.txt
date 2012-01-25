@@ -1,0 +1,11 @@
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\GetRates.Services.dll
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\GetRates.Services.pdb
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\HtmlAgilityPack.dll
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\ServiceStack.Text.dll
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\HtmlAgilityPack.pdb
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\HtmlAgilityPack.xml
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\ServiceStack.Text.pdb
+Y:\GetRates\getrates\GetRates.Services\bin\Debug\ServiceStack.Text.xml
+Y:\GetRates\getrates\GetRates.Services\obj\Debug\ResolveAssemblyReference.cache
+Y:\GetRates\getrates\GetRates.Services\obj\Debug\GetRates.Services.dll
+Y:\GetRates\getrates\GetRates.Services\obj\Debug\GetRates.Services.pdb

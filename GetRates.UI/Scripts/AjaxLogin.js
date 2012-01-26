@@ -125,6 +125,12 @@ $(function () {
                     e.preventDefault();
                     return;
                 }
+                if (parseFloat(amtVal) <= 99) {
+                    $("h2#validationMessage").text("Please make sure that the amount is atleast 100");
+                    $("h2#validationMessage").show();
+                    e.preventDefault();
+                    return;
+                }
                 $("h2#validationMessage").hide();
                 $("#dialog-modal").dialog('open');
                 var cl = new CanvasLoader('canvasloader-container'); //http://heartcode.robertpataki.com/canvasloader/
@@ -200,7 +206,7 @@ $(function () {
             $("div.ui-widget-content").css("height", "300px");
             $("div.ui-widget-content").css("text-align", "center");
             $("div.ui-widget-content").css("background", "");
-            
+
         }
     });
     $("a#linkProviders").click(function (e) {

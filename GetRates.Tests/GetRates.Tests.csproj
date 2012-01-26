@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AxisProviderServiceTests.cs" />
     <Compile Include="GoogleProviderServiceTests.cs" />
     <Compile Include="RemitToIndiaProviderServiceTests.cs" />
     <Compile Include="MoneyToIndiaProviderServiceTests.cs" />

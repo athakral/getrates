@@ -10,7 +10,7 @@ namespace GetRates.Web
             return new CalculatedData(returnedData)
                        {
                            Amount = finalAmount,
-                           EffectiveRate = finalAmount/enteredAmount,
+                           EffectiveRate = finalAmount / (enteredAmount + returnedData.Fee),
                            AmountWithdrawn = enteredAmount+returnedData.Fee
                        };
         }

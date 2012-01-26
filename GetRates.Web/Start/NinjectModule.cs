@@ -51,6 +51,9 @@ namespace GetRates.Web.Start
             kernel.Bind<IProviderService>().To<MoneyToIndiaProviderService>();
             kernel.Bind<IProviderService>().To<RemitToIndiaProviderService>();
             kernel.Bind<IProviderService>().To<XoomProviderService>();
+            kernel.Bind<IProviderService>().To<AxisProviderService>();
+            kernel.Bind<IProviderService>().To<BoBProviderService>();
+            kernel.Bind<IProviderService>().To<BOIProviderService>();
             kernel.Bind<ICalculationService>().To<CalculationService>();
             kernel.Bind<IProviderService>().To<GoogleProviderService>().When(request =>
                                                                              request.Target.Name.StartsWith(

@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AxisProviderService.cs" />
+    <Compile Include="BoBProviderService.cs" />
+    <Compile Include="BOIProviderService.cs" />
     <Compile Include="IProviderService.cs" />
     <Compile Include="MoneyToIndiaProviderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

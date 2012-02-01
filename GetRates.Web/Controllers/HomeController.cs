@@ -8,20 +8,20 @@ namespace GetRates.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly IEnumerable<IProviderService> providerServices;
+        private readonly IEnumerable<IExchangeRateProvider> providerServices;
         private readonly ICalculationService calculationService;
-        private readonly IProviderService referenceProviderService;
+        private readonly IExchangeRateProvider referenceExchangeRateProvider;
 
-        public HomeController(IEnumerable<IProviderService> providerServices, ICalculationService calculationService, IProviderService referenceProviderService)
+        public HomeController(IEnumerable<IExchangeRateProvider> providerServices, ICalculationService calculationService, IExchangeRateProvider referenceExchangeRateProvider)
         {
             this.providerServices = providerServices;
             this.calculationService = calculationService;
-            this.referenceProviderService = referenceProviderService;
+            this.referenceExchangeRateProvider = referenceExchangeRateProvider;
         }
 
         public ActionResult Index()
         {
-            ViewBag.Rate = referenceProviderService.GetRate(1).Rate;
+            ViewBag.Rate = referenceExchangeRateProvider.GetRate(1).Rate;
             return View();
         }
 

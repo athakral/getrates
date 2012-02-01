@@ -125,8 +125,8 @@ $(function () {
                     e.preventDefault();
                     return;
                 }
-                if (parseFloat(amtVal) <= 99) {
-                    $("h2#validationMessage").text("Please make sure that the amount is atleast 100");
+                if (parseFloat(amtVal) <= 24) {
+                    $("h2#validationMessage").text("Please make sure that the amount is atleast 25");
                     $("h2#validationMessage").show();
                     e.preventDefault();
                     return;

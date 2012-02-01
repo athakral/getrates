@@ -47,18 +47,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AxisProviderService.cs" />
-    <Compile Include="BoBProviderService.cs" />
-    <Compile Include="BOIProviderService.cs" />
     <Compile Include="IProviderService.cs" />
-    <Compile Include="MoneyToIndiaProviderService.cs" />
+    <Compile Include="ProviderService.cs" />
+    <Compile Include="Providers\AxisExchangeRateProvider.cs" />
+    <Compile Include="Providers\BoBExchangeRateProvider.cs" />
+    <Compile Include="Providers\BoiExchangeRateProvider.cs" />
+    <Compile Include="Providers\IExchangeRateProvider.cs" />
+    <Compile Include="Providers\MoneyToIndiaExchangeRateProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemitToIndiaProviderService.cs" />
-    <Compile Include="GoogleProviderService.cs" />
-    <Compile Include="XoomProviderService.cs" />
+    <Compile Include="Providers\RemitToIndiaExchangeRateProvider.cs" />
+    <Compile Include="Providers\GoogleExchangeRateProvider.cs" />
+    <Compile Include="ReturnedData.cs" />
+    <Compile Include="Providers\XoomExchangeRateProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GetRates.Domain\GetRates.Domain.csproj">
+      <Project>{8ED644E8-3649-4E3A-A8C1-C8AEF31E4AE0}</Project>
+      <Name>GetRates.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

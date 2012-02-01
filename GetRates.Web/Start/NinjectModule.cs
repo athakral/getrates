@@ -1,3 +1,4 @@
+using GetRates.Services.Providers;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Mvc;
@@ -48,14 +49,14 @@ namespace GetRates.Web.Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IProviderService>().To<MoneyToIndiaProviderService>();
-            kernel.Bind<IProviderService>().To<RemitToIndiaProviderService>();
-            kernel.Bind<IProviderService>().To<XoomProviderService>();
-            kernel.Bind<IProviderService>().To<AxisProviderService>();
-            kernel.Bind<IProviderService>().To<BoBProviderService>();
-            kernel.Bind<IProviderService>().To<BOIProviderService>();
+            kernel.Bind<IExchangeRateProvider>().To<MoneyToIndiaExchangeRateProvider>();
+            kernel.Bind<IExchangeRateProvider>().To<RemitToIndiaExchangeRateProvider>();
+            kernel.Bind<IExchangeRateProvider>().To<XoomExchangeRateProvider>();
+            kernel.Bind<IExchangeRateProvider>().To<AxisExchangeRateProvider>();
+            kernel.Bind<IExchangeRateProvider>().To<BoBExchangeRateProvider>();
+            kernel.Bind<IExchangeRateProvider>().To<BoiExchangeRateProvider>();
             kernel.Bind<ICalculationService>().To<CalculationService>();
-            kernel.Bind<IProviderService>().To<GoogleProviderService>().When(request =>
+            kernel.Bind<IExchangeRateProvider>().To<GoogleExchangeRateProvider>().When(request =>
                                                                              request.Target.Name.StartsWith(
                                                                                  "reference"));
         }        

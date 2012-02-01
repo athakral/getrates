@@ -47,13 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\IBaseRepoistory.cs" />
+    <Compile Include="Base\IBaseRepository.cs" />
     <Compile Include="Base\BaseRepositoryMongo.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\LastCalled.cs" />
+    <Compile Include="Entities\Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\LastCalledRepositoryMongo.cs" />
+    <Compile Include="Repositories\ILastCalledRepository.cs" />
+    <Compile Include="Repositories\IProviderRepository.cs" />
+    <Compile Include="Repositories\ProviderRepositoryMongo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

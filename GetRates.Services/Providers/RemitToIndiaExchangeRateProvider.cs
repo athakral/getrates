@@ -3,9 +3,9 @@ using System.Net;
 using System.Text;
 using HtmlAgilityPack;
 
-namespace GetRates.Services
+namespace GetRates.Services.Providers
 {
-    public class RemitToIndiaProviderService : IProviderService
+    public class RemitToIndiaExchangeRateProvider : IExchangeRateProvider
     {
         public ReturnedData GetRate(decimal amount) {
             var request = WebRequest.Create("http://www.timesofmoney.com/remittance/jsp/r2iExchRateCalculator.jsp?strAction=show&partnerSite=TOML&sendercountry=US&sendercurrency=USD&uiId=TOML") as HttpWebRequest;

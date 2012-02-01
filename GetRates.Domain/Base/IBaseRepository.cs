@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GetRates.Domain.Base
 {
-    public interface IBaseRepoistory<T,TId>  where TId : struct 
+    public interface IBaseRepository<T,TId>  where TId : struct 
     {
         IQueryable<T> All { get; }
         T Find(TId id);

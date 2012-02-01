@@ -1,10 +1,9 @@
 using System.IO;
 using System.Net;
-using HtmlAgilityPack;
 
-namespace GetRates.Services
+namespace GetRates.Services.Providers
 {
-    public class MoneyToIndiaProviderService : IProviderService
+    public class MoneyToIndiaExchangeRateProvider : IExchangeRateProvider
     {
         public ReturnedData GetRate(decimal amount) {
             var getCookieRequest =

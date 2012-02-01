@@ -2,9 +2,9 @@ using HtmlAgilityPack;
 using System.Xml.Linq;
 using System.Linq;
 
-namespace GetRates.Services
+namespace GetRates.Services.Providers
 {
-    public class AxisProviderService : IProviderService
+    public class AxisExchangeRateProvider : IExchangeRateProvider
     {
         public ReturnedData GetRate(decimal amount)
         {
@@ -29,6 +29,9 @@ namespace GetRates.Services
                     try
                     {
                         if (amount >= decimal.Parse(minVal) && amount <= decimal.Parse(maxVal))
+                            chooseNext = true;
+                        // if this is the last range
+                        if (xElement.Descendants("td").Skip(8).FirstOrDefault() == x)
                             chooseNext = true;
                     }
                     catch (System.Exception)

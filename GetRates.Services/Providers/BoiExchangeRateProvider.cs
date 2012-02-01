@@ -1,10 +1,9 @@
 using HtmlAgilityPack;
-using System.Xml.Linq;
 using System.Linq;
 
-namespace GetRates.Services
+namespace GetRates.Services.Providers
 {
-    public class BOIProviderService : IProviderService
+    public class BoiExchangeRateProvider : IExchangeRateProvider
     {
         public ReturnedData GetRate(decimal amount)
         {

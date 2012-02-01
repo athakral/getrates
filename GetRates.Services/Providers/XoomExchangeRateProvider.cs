@@ -1,8 +1,8 @@
 using HtmlAgilityPack;
 
-namespace GetRates.Services
+namespace GetRates.Services.Providers
 {
-    public class XoomProviderService : IProviderService
+    public class XoomExchangeRateProvider : IExchangeRateProvider
     {
         public ReturnedData GetRate(decimal amount)
         {

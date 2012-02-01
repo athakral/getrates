@@ -1,8 +1,8 @@
 using HtmlAgilityPack;
 
-namespace GetRates.Services
+namespace GetRates.Services.Providers
 {
-    public class GoogleProviderService : IProviderService
+    public class GoogleExchangeRateProvider : IExchangeRateProvider
     {
         public ReturnedData GetRate(decimal amount)
         {

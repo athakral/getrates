@@ -7,7 +7,7 @@ using MongoDB.Driver.Builders;
 
 namespace GetRates.Domain.Base
 {
-    public class BaseRepositoryMongo<T, TId> : IBaseRepoistory<T, TId> where TId : struct 
+    public class BaseRepositoryMongo<T, TId> : IBaseRepository<T, TId> where TId : struct 
     {
         private readonly string collectionName = "";
         private readonly string databaseName = ConfigurationManager.AppSettings["MongoDbName"].ToString();

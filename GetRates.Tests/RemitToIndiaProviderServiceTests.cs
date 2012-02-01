@@ -1,4 +1,5 @@
 ﻿using System;
+using GetRates.Services.Providers;
 using NUnit.Framework;
 using GetRates.Services;
 
@@ -10,7 +11,7 @@ namespace GetRates.Tests
         [Test]
         public void Can_GetRate()
         {
-            var providerService = new RemitToIndiaProviderService();
+            var providerService = new RemitToIndiaExchangeRateProvider();
             var returnedValue=providerService.GetRate(100);
             Assert.NotNull(returnedValue);
             Assert.Greater(returnedValue.Rate, 35);

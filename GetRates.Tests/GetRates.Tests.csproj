@@ -52,6 +52,7 @@
     <Compile Include="AxisProviderServiceTests.cs" />
     <Compile Include="BaseRepositoryTests.cs" />
     <Compile Include="GoogleProviderServiceTests.cs" />
+    <Compile Include="RateRepositoryTests.cs" />
     <Compile Include="RemitToIndiaProviderServiceTests.cs" />
     <Compile Include="MoneyToIndiaProviderServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

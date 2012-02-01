@@ -70,21 +70,21 @@ namespace GetRates.Services
 
             //refer to tax table on http://www.timesofmoney.com/remittance/jsp/r2i_low_transfer_fees_money_transfer_asia.jsp?uiId=TOML&tab=US&sendercountry=US&sendercurrency=USD
 
-            var serviceTax = (decimal)25.75;
+            //var serviceTax = (decimal)25.75;
 
-            if (convertedAmount <= 100000)
-                if ((convertedAmount * (decimal)0.00103) > (decimal)25.75)
-                    serviceTax = (convertedAmount * (decimal)0.00103);
-            if (convertedAmount > 100000 && convertedAmount <= 1000000) {
-                serviceTax = 103 + (convertedAmount * (decimal)0.00052);
-            }
-            if(convertedAmount > 1000000)
-                serviceTax = 567 + (convertedAmount * (decimal)0.000103);
+            //if (convertedAmount <= 100000)
+            //    if ((convertedAmount * (decimal)0.00103) > (decimal)25.75)
+            //        serviceTax = (convertedAmount * (decimal)0.00103);
+            //if (convertedAmount > 100000 && convertedAmount <= 1000000) {
+            //    serviceTax = 103 + (convertedAmount * (decimal)0.00052);
+            //}
+            //if(convertedAmount > 1000000)
+            //    serviceTax = 567 + (convertedAmount * (decimal)0.000103);
 
-            if (serviceTax > 5150)
-                serviceTax = 5150;
+            //if (serviceTax > 5150)
+            //    serviceTax = 5150;
 
-            return tempDeduct + serviceTax;
+            return tempDeduct;
         }
 
         private decimal calculateFee(decimal amount) {

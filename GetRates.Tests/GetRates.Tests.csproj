@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AxisProviderServiceTests.cs" />
+    <Compile Include="BaseRepositoryTests.cs" />
     <Compile Include="GoogleProviderServiceTests.cs" />
     <Compile Include="RemitToIndiaProviderServiceTests.cs" />
     <Compile Include="MoneyToIndiaProviderServiceTests.cs" />
@@ -57,9 +58,16 @@
     <Compile Include="XoomProviderServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GetRates.Domain\GetRates.Domain.csproj">
+      <Project>{8ED644E8-3649-4E3A-A8C1-C8AEF31E4AE0}</Project>
+      <Name>GetRates.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GetRates.Services\GetRates.Services.csproj">
       <Project>{5EA607A3-B740-40AD-9CE8-6BB167986527}</Project>
       <Name>RateCheck.Services</Name>

@@ -6,13 +6,18 @@ namespace GetRates.Web
     {
         public CalculatedData Process(ReturnedData returnedData, decimal enteredAmount)
         {
-            var finalAmount = (returnedData.Rate*enteredAmount) - returnedData.Deductions;
-            return new CalculatedData(returnedData)
-                       {
-                           Amount = finalAmount,
-                           EffectiveRate = finalAmount / (enteredAmount + returnedData.Fee),
-                           AmountWithdrawn = enteredAmount+returnedData.Fee
-                       };
+            CalculatedData data = null;
+            if (returnedData != null)
+            {
+                var finalAmount = (returnedData.Rate * enteredAmount) - returnedData.Deductions;
+                data= new CalculatedData(returnedData)
+                           {
+                               Amount = finalAmount,
+                               EffectiveRate = finalAmount / (enteredAmount + returnedData.Fee),
+                               AmountWithdrawn = enteredAmount + returnedData.Fee
+                           };
+            }
+            return data;
         }
     }
 }

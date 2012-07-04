@@ -131,6 +131,12 @@ $(function () {
                     e.preventDefault();
                     return;
                 }
+                if (parseFloat(amtVal) > 10000) {
+                    $("h2#validationMessage").text("Please make sure that the amount is less than 10000");
+                    $("h2#validationMessage").show();
+                    e.preventDefault();
+                    return;
+                }
                 $("h2#validationMessage").hide();
                 $("#dialog-modal").dialog('open');
                 var cl = new CanvasLoader('canvasloader-container'); //http://heartcode.robertpataki.com/canvasloader/
